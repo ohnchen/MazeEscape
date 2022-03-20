@@ -7,7 +7,7 @@ int isFree(char maze[][5], int i, int j) {
 
 int bfs(char maze[][5], int rows, int visited[][5], int i, int j) {
   
-  while((i > 0 && i < rows) && (j > 0 && j < strlen(maze[0]))) {
+  while((i > 0 && i < rows-1) && (j > 0 && j < strlen(maze[0])-1)) {
     if(isFree(maze, i+1, j) && visited[i+1][j] == 0) {
       visited[i+1][j] = 1;
       printf("nach unten \n");
@@ -55,16 +55,25 @@ int hasExit(char maze[][5], int visited[][5], int rows) {
 
 int main() {
   
-  char maze[3][5];
-  int visited[3][5] = {0};
+  char maze[10][5];
+  int visited[10][5] = {0};
 
-  strcpy(maze[0], "# ##");
+  strcpy(maze[0], "####");
   strcpy(maze[1], "# k#");
-  strcpy(maze[2], "####");
+  strcpy(maze[2], "# ##");
+  strcpy(maze[3], "# ##");
+  strcpy(maze[4], "# ##");
+  strcpy(maze[5], "# ##");
+  strcpy(maze[6], "# ##");
+  strcpy(maze[7], "# ##");
+  strcpy(maze[8], "#   ");
+  strcpy(maze[9], "####");
   
-  int boolean = hasExit(maze, visited, 3);
+  int boolean = hasExit(maze, visited, 10);
+
   if(boolean == 1) 
     printf("%s \n", "I'm OUT!!"); 
   else 
     printf("%s \n", "There is no exit!");
+
 }
